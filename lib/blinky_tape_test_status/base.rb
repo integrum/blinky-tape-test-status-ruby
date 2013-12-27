@@ -1,5 +1,9 @@
 module BlinkyTapeTestStatus
   class Base
+    def initialize(options={})
+      @tty ||= options[:tty]
+    end
+
     def blue!
       write! 'sb'
     end
@@ -46,7 +50,7 @@ module BlinkyTapeTestStatus
 
     protected
     def serial_port
-      @serial_port ||= SerialPort.new '/dev/ttyACM0', 9600, 8, 1, SerialPort::NONE
+      @serial_port ||= SerialPort.new @tty, 9600, 8, 1, SerialPort::NONE
     end
 
     def valid_port

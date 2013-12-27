@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require_relative "blinky-tape"
+
+blinky_tape = BlinkyTape.new
+blinky_tape.write! *ARGV
+blinky_tape.quit!

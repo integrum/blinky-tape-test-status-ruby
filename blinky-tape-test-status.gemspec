@@ -4,7 +4,6 @@ require "blinky_tape_test_status/version"
 Gem::Specification.new do |s|
   s.name        = 'blinky-tape-test-status'
   s.version     = BlinkyTapeTestStatus::VERSION
-  s.date        = '2013-12-26'
   s.summary     = "blinky-tape-test-status"
   s.description = "A Ruby interface for blinky-tape-test-status"
   s.authors     = ["Jade Meskill", "Roy van de Water"]

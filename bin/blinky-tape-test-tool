@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
-require_relative "blinky-tape"
+require "blinky_tape_test_status"
 
-blinky_tape = BlinkyTape.new
+blinky_tape = BlinkyTapeTestStatus::Base.new
 blinky_tape.write! *ARGV
 blinky_tape.quit!

@@ -1,7 +1,8 @@
 module BlinkyTapeTestStatus
   class Base
     def initialize(options={})
-      @tty ||= options[:tty]
+      @tty ||= options[:tty] || best_guess_tty
+      raise "No tty specified or discoved" unless @tty
     end
 
     def blue!
@@ -49,6 +50,12 @@ module BlinkyTapeTestStatus
     end
 
     protected
+    def best_guess_tty
+      Dir.glob "/dev/tty.usbmodem*" do |tty|
+        return tty
+      end
+    end
+
     def serial_port
       @serial_port ||= SerialPort.new @tty, 9600, 8, 1, SerialPort::NONE
     end

@@ -24,6 +24,7 @@ module BlinkyTapeTestStatus
     def quit!
       serial_port.flush
       serial_port.close
+      @serial_port = nil
     end
 
     def rainbow!
@@ -47,6 +48,7 @@ module BlinkyTapeTestStatus
       commands.each do |command|
         serial_port.puts command
       end
+      quit!
     end
 
     protected

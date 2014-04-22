@@ -53,8 +53,24 @@ module BlinkyTapeTestStatus
 
     protected
     def best_guess_tty
-      Dir.glob "/dev/tty.usbmodem*" do |tty|
-        return tty
+      if Gem.win_platform?
+        best_guess_tty_windows
+      else
+        Dir.glob "/dev/tty.usbmodem*" do |tty|
+          return tty
+        end
+      end
+    end
+
+    def best_guess_tty_windows
+      0.upto(10) do |x|
+        @tty = x
+        begin
+          serial_port
+          @tty = nil
+          return x
+        rescue Errno::ENOENT
+        end
       end
     end
 

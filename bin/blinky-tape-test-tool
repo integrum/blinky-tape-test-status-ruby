@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require "rubygems"
 require "blinky_tape_test_status"
 
 blinky_tape = BlinkyTapeTestStatus::Base.new
